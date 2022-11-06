@@ -1,12 +1,10 @@
-import { NavigationContainer } from "@react-navigation/native";
-import React, { useState } from "react";
-import { View, Button, Text, StyleSheet, FlatList } from "react-native";
-import TopTabNavigator from "../navigation/TabNavigator";
+import React from 'react';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>aaaaaaaa</Text>
+      <Text>This is homescreen</Text>
     </View>
   );
 };
@@ -17,6 +15,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 40,
     paddingHorizontal: 20,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
 });
