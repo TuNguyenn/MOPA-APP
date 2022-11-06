@@ -1,19 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  button: {
-    margin: 15,
-    backgroundColor: "#d4d2d2",
-    height: 55,
-    borderRadius: 5,
-  },
-  textButton: {
-    fontSize: 20,
-    fontWeight: "600",
-    color: "#838383",
-    alignSelf: "center",
-    padding: 15,
-  },
+
   center: {
     // flex: 1,
     // justifyContent: "center",
@@ -80,6 +68,10 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     height: 340,
   },
+  containerItem:{
+    flexDirection: 'row', 
+    flexWrap: 'wrap'
+  },
   wrapperItem: {
     width: 110,
     height: 110,
@@ -109,6 +101,19 @@ export const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 15,
   },
+  button: {
+    margin: 15,
+    backgroundColor: "#d4d2d2",
+    height: 55,
+    borderRadius: 5,
+  },
+  textButton: {
+    fontSize: 20,
+    fontWeight: "600",
+    color: "#838383",
+    alignSelf: "center",
+    padding: 15,
+  },
   wrapperItemPressed: {
     width: 110,
     height: 110,
@@ -118,6 +123,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "coral",
     borderRadius: 5,
+    zIndex: 1
   },
   textItemTitlePressed: {
     textAlign: "center",
@@ -129,5 +135,18 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     color: "coral",
     fontSize: 14,
+  },
+  buttonPressed: {
+    margin: 15,
+    backgroundColor: "coral",
+    height: 55,
+    borderRadius: 5,
+  },
+  textButtonPressed: {
+    fontSize: 20,
+    fontWeight: "600",
+    color: "white",
+    alignSelf: "center",
+    padding: 15,
   },
 });

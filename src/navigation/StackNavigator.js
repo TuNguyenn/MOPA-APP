@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Home from "../screens/Home";
+import Home from "../screens/HomeScreen";
 import About from "../screens/About";
 import Contact from "../screens/Contact";
 import ComboDataScreen from "../screens/ComboDataScreen";
@@ -18,23 +18,6 @@ const screenOptionStyle = {
     headerBackTitle: "Back",
   };
 
-const MainStackNavigator = () => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-        headerStyle: {
-          backgroundColor: "#9AC4F8",
-        },
-        headerTintColor: "white",
-        headerBackTitle: "Back",
-      }}
-    >
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="About" component={About} />
-    </Stack.Navigator>
-  );
-};
 const ContactStackNavigator = () => {
     return (
       <Stack.Navigator screenOptions={screenOptionStyle}>
@@ -61,4 +44,4 @@ const LikeStackNavigator = () => {
   }
  
 
-export { MainStackNavigator, ContactStackNavigator, ComboDataStackNavigator, LikeStackNavigator };
+export { ContactStackNavigator, ComboDataStackNavigator, LikeStackNavigator };

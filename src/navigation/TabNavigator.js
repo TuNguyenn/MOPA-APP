@@ -3,7 +3,6 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { StyleSheet } from "react-native";
 
 import {
-  MainStackNavigator,
   ContactStackNavigator,
   ComboDataStackNavigator,
   LikeStackNavigator,
@@ -32,7 +31,6 @@ const TopTabNavigator = () => {
         
       }}
     >
-      <Tab.Screen name="Home" component={MainStackNavigator} />
       <Tab.Screen name="Contact" component={ContactStackNavigator} />
       <Tab.Screen name="Nạp data" component={ComboDataStackNavigator} />
       <Tab.Screen name="Like" component={LikeStackNavigator} />

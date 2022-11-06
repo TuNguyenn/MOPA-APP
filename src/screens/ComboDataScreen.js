@@ -14,39 +14,66 @@ import {
 import { DATA } from "../components/BuyComboData/HardData";
 import { styles } from "../components/BuyComboData/Styles";
 
-export default function ComboDataScreen() {
+export default function ComboDataScreen(navigation) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [expand, setExpand] = useState(false);
-  const [select, setSelect] = useState(DATA);
-  // console.log("selectItem:", select);
+  const [selected, setSelected] = useState(null);
 
-  const handleOnPress = (content) => {
-    const newItem = select.map((val) => {
-      if (val.id === content.id) {
-        return { ...val, selected: !val.selected };
-      } else {
-        return val;
-      }
-    });
-    setSelect(newItem);
+  const handleOnPress = (id) => {
+    if (selected === id) {
+      return setSelected(null);
+    } else {
+      return setSelected(id);
+    }
   };
+
   const renderItem = ({ item }) => {
     let items = [];
-    if (item.content) {
-      items = item.content.map((content) => {
+    if (item.data) {
+      items = item.data.map((data) => {
+        console.log(data);
         return (
-          <TouchableOpacity
-          onPress={() => handleOnPress(content)}
-          style={
-            !content.selected ? styles.wrapperItem : styles.wrapperItemPressed
-          }
-          >
-            <Text style={styles.textItemTitle}>{content.titleContent}</Text>
-            <Text style={styles.textItem}>{content.capacity}</Text>
-            <Text style={styles.textItem}>{content.price}</Text>
+          <TouchableOpacity onPress={() => handleOnPress(data.id)}>
+            <View
+              style={
+                data.id === selected
+                  ? styles.wrapperItemPressed
+                  : styles.wrapperItem
+              }
+            >
+              <Text
+                style={
+                  data.id === selected
+                    ? styles.textItemTitlePressed
+                    : styles.textItemTitle
+                }
+              >
+                {data.titleContent}
+              </Text>
+              <Text
+                style={
+                  data.id === selected
+                    ? styles.textItemPressed
+                    : styles.textItem
+                }
+              >
+                {data.capacity}
+              </Text>
+              <Text
+                style={
+                  data.id === selected
+                    ? styles.textItemPressed
+                    : styles.textItem
+                }
+              >
+                {data.price}
+              </Text>
+            </View>
+            {/* {selected && <View style={styles.wrapperItemPressed} />} */}
           </TouchableOpacity>
         );
       });
+      // console.log(selected)
     }
 
     return (
@@ -96,21 +123,27 @@ export default function ComboDataScreen() {
           />): null} */}
         </View>
       </View>
-      {expand === true ? (
+      {expand === false ? (
         <View>
           <FlatList
+            keyExtractor={(item) => item.id}
             style={styles.wrapperList}
-            data={select}
+            data={DATA}
             renderItem={renderItem}
           />
 
           <Pressable
-            style={styles.button}
+          // onPress={}
+            style={selected ? styles.buttonPressed : styles.button}
             title="Press me"
             // disabled
-            onPress={() => Alert.alert("Cannot press this one")}
+            onPress={() => navigation.push('')}
           >
-            <Text style={styles.textButton}>Tiếp tục</Text>
+            <Text
+              style={selected ? styles.textButtonPressed : styles.textButton}
+            >
+              Tiếp tục
+            </Text>
           </Pressable>
         </View>
       ) : null}
