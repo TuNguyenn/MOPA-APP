@@ -2,7 +2,8 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import TopTabNavigator from './TabNavigator';
-import About from '../screens/About';
+import DataBillDetail from '../screens/DataBillDetail';
+import Test from '../screens/test';
 
 const Stack = createStackNavigator();
 
@@ -32,7 +33,24 @@ export default function RootNavigator() {
           headerBackTitleVisible: true,
         })}
       />
-      <Stack.Screen name="About" component={About} />
+      <Stack.Screen
+        name="Xác thực thanh toán"
+        component={DataBillDetail}
+        options={{
+          headerStyle: { backgroundColor: 'coral' },
+          headerTintColor: '#fff',
+          headerBackTitleVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="Test"
+        component={Test}
+        options={{
+          headerStyle: { backgroundColor: 'coral' },
+          headerTintColor: '#fff',
+          headerBackTitleVisible: false,
+        }}
+      />
     </Stack.Navigator>
   );
 }

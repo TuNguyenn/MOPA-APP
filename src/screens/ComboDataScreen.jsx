@@ -18,6 +18,7 @@ export default function ComboDataScreen({ navigation }) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [expand, setExpand] = useState(false);
   const [selected, setSelected] = useState(null);
+  const [getData, setGetData] = useState(null);
 
   const handleOnPress = (id) => {
     if (selected === id) {
@@ -31,6 +32,7 @@ export default function ComboDataScreen({ navigation }) {
     let items = [];
     if (item.data) {
       items = item.data.map((data) => {
+        // console.log('%cComboDataScreen.jsx line:34 data.id', 'color: #007acc;', data.id);
         return (
           <TouchableOpacity onPress={() => handleOnPress(data.id)}>
             <View style={data.id === selected ? styles.wrapperItemPressed : styles.wrapperItem}>
@@ -43,7 +45,7 @@ export default function ComboDataScreen({ navigation }) {
                 {data.capacity}
               </Text>
               <Text style={data.id === selected ? styles.textItemPressed : styles.textItem}>
-                {data.price}
+                {data.priceText}
               </Text>
             </View>
           </TouchableOpacity>
@@ -93,7 +95,7 @@ export default function ComboDataScreen({ navigation }) {
           />): null} */}
         </View>
       </View>
-      {expand === false ? (
+      {expand === true ? (
         <View>
           <FlatList
             keyExtractor={(item) => item.id}
@@ -105,7 +107,11 @@ export default function ComboDataScreen({ navigation }) {
           <Pressable
             style={selected ? styles.buttonPressed : styles.button}
             title="Press me"
-            onPress={selected ? () => navigation.navigate('About') : null}
+            onPress={
+              selected
+                ? () => navigation.navigate('Xác thực thanh toán', { selected, DATA, phoneNumber })
+                : null
+            }
           >
             <Text style={selected ? styles.textButtonPressed : styles.textButton}>Tiếp tục</Text>
           </Pressable>
